@@ -3,8 +3,7 @@ $(document).ready(function(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        //This 
-        "url": "http://ITB-1106B-CP1.byu.edu:8000/buildings/ITB/rooms/1106B/configuration",
+        "url": "http://[enter_your_Pi's_IP_address_here]:8000/buildings/DEMO/rooms/123/configuration",
         "method": "GET",
     }
       
@@ -26,7 +25,7 @@ $(document).ready(function(){
             }
 
         }
-
+        
     });
     
     $(document).on("click",".inputButton", function(input){
@@ -126,7 +125,6 @@ $(document).ready(function(){
     }); 
 
     function updateRoom(roomState){
-        console.log("is this happening?");
         var settings = {
             "async": true,
             "crossDomain": true,
