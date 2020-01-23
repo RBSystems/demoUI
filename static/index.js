@@ -3,7 +3,7 @@ $(document).ready(function(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://[enter_your_Pi's_IP_address_here]:8000/buildings/DEMO/rooms/123/configuration",
+        "url": "localhost:8000/buildings/DEMO/rooms/123/configuration",
         "method": "GET",
     }
       
