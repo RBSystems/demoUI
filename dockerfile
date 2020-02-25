@@ -1,6 +1,9 @@
 FROM gcr.io/distroless/static
 MAINTAINER Matthew Smith <mjsmith3@byu.edu>
 
-COPY server /server
+ARG NAME
+
+COPY ${NAME} /server
 COPY static /static
+
 ENTRYPOINT ["/server"]
