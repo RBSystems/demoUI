@@ -25,7 +25,7 @@ build: deps
 
 docker: clean build
 	@echo Building container ${OWNER}/${NAME}:${VERSION}
-	@docker build -f dockerfile --build-arg NAME=${NAME}-linux-amd64 -t ${OWNER}/${NAME}:${VERSION} dist
+	@docker build -f dockerfile --build-arg NAME=${NAME}-linux-amd64 -t ${OWNER}/${NAME}:${VERSION} -t ${OWNER}/${NAME}:latest dist
 
 deploy: docker
 	@echo Logging into Dockerhub
@@ -33,6 +33,9 @@ deploy: docker
 
 	@echo Pushing container ${OWNER}/${NAME}:${VERSION}
 	@docker push ${OWNER}/${NAME}:${VERSION}
+
+	@echo Pushing container ${OWNER}/${NAME}:latest
+	@docker push ${OWNER}/${NAME}:latest
 
 clean:
 	@go clean
