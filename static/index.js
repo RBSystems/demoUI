@@ -3,8 +3,9 @@ $(document).ready(function(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "localhost:8000/buildings/DEMO/rooms/123/configuration",
+        "url": "http://localhost:8000/buildings/ITB/rooms/1106B/configuration",
         "method": "GET",
+
     }
       
     $.ajax(settings).done(function (response) {
@@ -111,7 +112,7 @@ $(document).ready(function(){
                 roomState.displays[0].power="on";
                 break;
             case "off":
-                roomState.displays[0].power="off";               
+                roomState.displays[0].power="standby";               
                 break;
             case "blank":
                 roomState.displays[0].blanked=true
@@ -128,7 +129,7 @@ $(document).ready(function(){
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://ITB-1106B-CP1.byu.edu:8000/buildings/ITB/rooms/1106B",
+            "url": "http://localhost:8000/buildings/DEMO/rooms/123",
             "method": "PUT",
             "headers": {
               "Content-Type": "application/json",
