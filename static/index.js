@@ -3,7 +3,7 @@ $(document).ready(function(){
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:8000/buildings/ITB/rooms/1106B/configuration",
+        "url": "http://localhost:8000/buildings/DEMO/rooms/123/configuration",
         "method": "GET",
 
     }
