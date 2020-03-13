@@ -1,12 +1,14 @@
 $(document).ready(function(){
+    let host = window.location.hostname;
     //Make the call to find out what is in the room and add however many inputs there are.
     var settings = {
         "async": true,
         "crossDomain": true,
-        "url": "http://localhost:8000/buildings/DEMO/rooms/123/configuration",
+        "url": `http://${host}:8000/buildings/DEMO/rooms/123/configuration`,
         "method": "GET",
-
     }
+
+    console.log(settings.url)
       
     $.ajax(settings).done(function (response) {
         let inputNumber = 1;
@@ -14,7 +16,7 @@ $(document).ready(function(){
             for (let j=0; j < response.devices[i].roles.length; j++) {
                 if (response.devices[i].roles[j].description === "VideoIn") {
                     let html = `<div id="input`+ inputNumber+`" class="card rounded" style="width: 10rem;">
-                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Ic_settings_input_hdmi_48px.svg/1024px-Ic_settings_input_hdmi_48px.svg.png" class="card-img-top" style="height: 8rem; width: 8rem;margin: auto; alt="...">
+                                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/5/53/Ic_settings_input_hdmi_48px.svg/1024px-Ic_settings_input_hdmi_48px.svg.png" class="card-img-top" style="height: 6rem; width: 6rem;margin: auto; alt="...">
                                     <div class="card-body">
                                         <button class="btn btn-block btn-secondary inputButton" name="`+ inputNumber+`" value="`+ response.devices[i].name+`">Select `+ response.devices[i].name +`</button>
                                     </div>
@@ -34,15 +36,6 @@ $(document).ready(function(){
         let selectedInput = input.target.value;
         //All of this stuff is just one method of highlighting the buttons when they are selected
         //Using something like React of Angular with state management would make it easier
-        let inputArray = $(".card-deck > div")
-        for (let i=1; i <= inputArray.length; i++) {
-            if (Number(input.target.name) === i) {
-                inputArray.eq(i-1).addClass("border").addClass("border-primary");
-            } else {
-                inputArray.eq(i-1).removeClass("border").removeClass("border-primary");
-            }
-
-        }
 
         let buttonArray = $(".inputButton")
         for (i=1; i<= buttonArray.length; i++) {            
@@ -129,7 +122,7 @@ $(document).ready(function(){
         var settings = {
             "async": true,
             "crossDomain": true,
-            "url": "http://localhost:8000/buildings/DEMO/rooms/123",
+            "url": `http://${host}:8000/buildings/DEMO/rooms/123`,
             "method": "PUT",
             "headers": {
               "Content-Type": "application/json",
